@@ -1,0 +1,18 @@
+#! /bin/bash
+
+SIZE=$((1024 * 1024 * 100))
+AVG=5
+
+for block in 1 2 4 8 16 32 64 128 256 512 1024 2048 4096 8192 16384 32768 65536 131072
+do
+    tot="0"
+    for a in `seq $AVG`
+    do
+	res=$(dd if=/dev/zero of=/dev/null bs=$block count=$((SIZE/block)) 2>&1)
+	time=$(echo $res |awk '{print $14}'| tr "," ".")
+	tot="$tot + $time"
+    done
+    avg=$(echo "($tot)/$AVG" |bc -l | sed -r 's/^(-?)\./\10./')
+
+    echo "$block $avg"
+done

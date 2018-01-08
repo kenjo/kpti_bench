@@ -1,0 +1,7 @@
+#! /bin/bash
+
+paste $1 $2 | while read b1 t1 b2 t2
+do
+    per=$(echo -e "($t2-$t1)/$t1 * 100 " | bc -l )
+    printf  "block size %5s %6.6s %% slower with kpti\n" "$b1" "$per"
+done
