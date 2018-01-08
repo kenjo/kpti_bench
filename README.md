@@ -34,7 +34,7 @@ cache size	: 8192 KB
 ```
 
 this is the rather sad result.
-
+```
 block size     1 155.18 % slower with kpti
 block size     2 155.99 % slower with kpti
 block size     4 155.57 % slower with kpti
@@ -53,5 +53,5 @@ block size 16384 19.138 % slower with kpti
 block size 32768 9.4661 % slower with kpti
 block size 65536 3.0003 % slower with kpti
 block size 131072 -.8671 % slower with kpti
-
+```
 
